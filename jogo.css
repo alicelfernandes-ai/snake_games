@@ -10,7 +10,7 @@
     --borda: #1f3320;
     --texto: #d1fae5;
     --esmaecido: #6b7280;
-    --tamanho-celular: 28px;
+    --tamanho-celula: 28px;
     --colunas: 20;
 
 }
@@ -79,5 +79,24 @@ body {
         font-family: "Press Start 2P";
         font-size: 1rem;
         color: var(--verde);
-        line-height: 1.4+.;
+        line-height: 1.4;
     }
+
+    .arena{
+        position: relative;
+    }
+
+    .grade{
+        display: grid;
+        grid-template-columns: repeat(var(--colunas), var(--tamanho-celula));
+        grid-template-rows: repeat(var(--colunas), var(--tamanho-celula));
+        background: var(--fundo-grade);
+        border: 2px solid var(--borda);
+        border-radius: 4px;
+        gap: 1px;
+        padding: 1px;
+        background-image: linear-gradient(var(--borda) 1px, transparent 1px), linear-gradient(90deg, var(--borda)1px, transparent 1px);
+        background-size: calc(var(--tamanho-celula) + 1 px)calc(var(--tamanho-celula)+1px);
+
+    }
+
