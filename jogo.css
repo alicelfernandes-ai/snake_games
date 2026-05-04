@@ -3,7 +3,7 @@
 :root{
     --verde: #4ade80;
     --verde-escuro: #16a34a;
-    --verde-cabeca: #86EFAC;
+    --verde-cabeca: #86efac;
     --comida: #f87171;
     --fundo: #0a0f0a;
     --fundo-grade: #0d140d;
@@ -12,16 +12,15 @@
     --esmaecido: #6b7280;
     --tamanho-celula: 28px;
     --colunas: 20;
-
 }
 
-* {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
+body{
     font-family: "Nunito", sans-serif;
     background: var(--fundo);
     color: var(--texto);
@@ -31,72 +30,102 @@ body {
     align-items: center;
     overflow: hidden;
     user-select: none;
-
 }
 
-    .hud{
-        width: 100%;
-        max-width: calc(var(--tamanho-celula)*var(--colunas)+4px);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 0;
-        gap: 8px;
-    }
+.hud{
+    width: 100%;
+    max-width: calc(var(--tamanho-celula)* var(--colunas) + 4px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    gap: 8px;
+}
 
-    .btn-menu{
-        font-size: 0.75rem;
-        color: var(--esmaecido);
-        text-decoration: none;
-        padding: 6px 12px;
-        border: 1px solid var(--borda);
-        border-radius: 6px;
-        transition: color 0.2s, border-color 0.2s;
-        white-space: nowrap;
-    }
+.btn-menu{
+    font-size: 0.75rem;
+    color: var(--esmacido);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid var(--borda);
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap; 
+}
 
-    .btn-menu:hover{
-        color: var(--verde);
-        border-color: var(--verde);
-    }
+.btn-menu:hover{
+    color: var(--verde);
+    border-color: var(--verde);
+}
 
-    .hud-centro,
-    .hud-direita{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.hud-centro,
+.hud-direita{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    .label-hud{
-        font-size: 0.55rem;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: var(--esmaecido);
+.label-hud{
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--esmaecido);
+}
 
-    }
+.valor-hud{
+    font-family: "Press Start 2P", monospace;
+    font-size: 1rem;
+    color: var(--verde);
+    line-height: 1.4;
+}
 
-    .valor-hud{
-        font-family: "Press Start 2P";
-        font-size: 1rem;
-        color: var(--verde);
-        line-height: 1.4;
-    }
+.arena {
+    position: relative;
+}
 
-    .arena{
-        position: relative;
-    }
+.grade{
+    display: grid;
+    grid-template-columns: repeat(var(--colunas), var(--tamanho-celula));
+    grid-template-rows: repeat(var(--colunas), var(--tamanho-celula));
+    background: var(--fundo-grade);
+    border: 2px solid var(--borda);
+    border-radius: 4px;
+    padding: 1px;
+    gap: 1px;
+    background-image: 
+        linear-gradient(var(--borda) 1px, transparent 1px),
+        linear-gradient(90deg, var(--borda) 1px, transparent 1px);
+    background-size: calc(var(--tamanho-celula) + 1px) calc(var(--tamanho-celula) + 1px);
+}
 
-    .grade{
-        display: grid;
-        grid-template-columns: repeat(var(--colunas), var(--tamanho-celula));
-        grid-template-rows: repeat(var(--colunas), var(--tamanho-celula));
-        background: var(--fundo-grade);
-        border: 2px solid var(--borda);
-        border-radius: 4px;
-        gap: 1px;
-        padding: 1px;
-        background-image: linear-gradient(var(--borda) 1px, transparent 1px), linear-gradient(90deg, var(--borda)1px, transparent 1px);
-        background-size: calc(var(--tamanho-celula) + 1 px)calc(var(--tamanho-celula)+1px);
+.celula{
 
-    }
+    width: var(--tamanho-celula);
+    height: var(--tamanho-celula);
+    border-radius: 2px;
+    transition: background-color 0.05s;
+}
 
+.celula.cobra{
+
+    width: var(--verde);
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgba(74, 222, 128, 0.4);
+}
+
+.celula.cabeca{
+    background-color: var(--verde-cabeca);
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(134, 239, 172, 0.7);
+}
+
+.celula.comida{
+    background-color: var(--comida);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(248, 113, 113, 0.6);
+    animation: pulsar 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes pulsar{
+    from{ transform: scale(0.85);}
+    to {transform: scale(1.05);}
+}
