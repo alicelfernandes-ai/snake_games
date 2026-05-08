@@ -153,3 +153,33 @@ function mudarDirecao(tecla){
         proximaDirecao = {x: 1, y: 0};
     };
 }
+
+document.addEventListener("keydown", (evento)  => {
+    if(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(evento)){
+        evento.preventDefault();
+
+    }
+
+    mudarDirecao(evento.key);
+});
+
+function atualizarHUD() {
+    document.getElementById("pontuacao").textContent = pontuacao;
+    document.getElementById("recorde").textContent = recorde;
+}
+
+function encerrarJogo() {
+    emJogo = false;
+    clearInterval(intervalo);
+
+    let novoRecorde = false;
+
+    if(pontuacao> recorde){
+        recorde = pontuacao;
+        localStorage.setItem("snake_recorde", recorde);
+        novoRecorde = true;
+    }
+
+    document.getElementById("overlay-pontos").textContent = pontuacao + " pontos";
+    document.getElementById("overlay-recorde"). textContent = 
+}
