@@ -181,5 +181,11 @@ function encerrarJogo() {
     }
 
     document.getElementById("overlay-pontos").textContent = pontuacao + " pontos";
-    document.getElementById("overlay-recorde"). textContent = 
+    document.getElementById("overlay-recorde"). textContent = novoRecorde ? "Novo recorde!": "Recorde: " + recorde;
+
+    document.getElementById("overlay").classList.add("visivel");
+}
+
+function esconderOverlay() {
+      document.getElementById("overlay").classList.remove("visivel");
 }
